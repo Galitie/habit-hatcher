@@ -1,8 +1,4 @@
-const Button = ({ color, text }) => {
-  const onClick = () => {
-    console.log("click");
-  };
-
+const Button = ({ color, text, onClick }) => {
   return (
     <button
       onClick={onClick}
@@ -15,3 +11,7 @@ const Button = ({ color, text }) => {
 };
 
 export default Button;
+
+Button.defaultProps = {
+  color: "steelblue",
+};
