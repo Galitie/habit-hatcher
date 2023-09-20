@@ -8,38 +8,14 @@ function App() {
       id: 1,
       text: "This is a task",
       dateDue: "9/19/2023",
-      reminder: true,
+      completed: false,
     },
 
     {
       id: 2,
       text: "This is another task",
       dateDue: "10/1/2023",
-      reminder: false,
-    },
-    {
-      id: 3,
-      text: "This is another task",
-      dateDue: "10/1/2025",
-      reminder: false,
-    },
-    {
-      id: 4,
-      text: "This is another task",
-      dateDue: "10/1/2023",
-      reminder: false,
-    },
-    {
-      id: 5,
-      text: "Taaaaaaaaask",
-      dateDue: "10/6/2023",
-      reminder: false,
-    },
-    {
-      id: 6,
-      text: "Taskerbee",
-      dateDue: "9/1/2023",
-      reminder: false,
+      completed: true,
     },
   ]);
 
@@ -48,10 +24,23 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
+  // Toggle complete
+  const toggleComplete = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
+  };
+
   return (
     <div className="container">
       <Header />
-      <Tasks tasks={tasks} onDelete={deleteTask} />
+      {tasks.length > 0 ? (
+        <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleComplete} />
+      ) : (
+        'Click "Add Task" to add a task!'
+      )}
     </div>
   );
 }

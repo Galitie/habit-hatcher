@@ -1,16 +1,27 @@
 import { FaTimes } from "react-icons/fa";
+import { FaCheck } from "react-icons/fa";
 
-const Task = ({ task, onDelete }) => {
+const Task = ({ task, onDelete, onToggle }) => {
   return (
-    <div className="task">
+    <div
+      className={`task ${task.completed ? "completed" : ""}`}
+      onDoubleClick={() => onToggle(task.id)}
+    >
       <h3>
         {task.text}{" "}
-        <FaTimes
-          style={{ color: "red", cursor: "pointer" }}
-          onClick={() => onDelete(task.id)}
-        />
+        {task.completed ? (
+          <FaCheck
+            style={{ color: "green", cursor: "pointer" }}
+            onClick={() => onDelete(task.id)}
+          />
+        ) : (
+          <FaTimes
+            style={{ color: "red", cursor: "pointer" }}
+            onClick={() => onDelete(task.id)}
+          />
+        )}
       </h3>
-      <p>{task.dateDue}</p>
+      <p>{task.dateDue} </p>
     </div>
   );
 };
