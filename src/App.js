@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import { useState } from "react";
+import AddTask from "./components/AddTask";
 
 function App() {
   const [tasks, setTasks] = useState([
@@ -8,6 +9,7 @@ function App() {
       id: 1,
       text: "This is a task",
       dateDue: "9/19/2023",
+      difficulty: 1,
       completed: false,
     },
 
@@ -15,6 +17,7 @@ function App() {
       id: 2,
       text: "This is another task",
       dateDue: "10/1/2023",
+      difficulty: 2,
       completed: true,
     },
   ]);
@@ -36,6 +39,7 @@ function App() {
   return (
     <div className="container">
       <Header />
+      <AddTask />
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleComplete} />
       ) : (
