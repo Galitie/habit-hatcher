@@ -15,7 +15,7 @@ function AddTask({ onAdd }) {
     onAdd({ text, day, difficulty });
 
     setText("");
-    setDay();
+    setDay("");
     setDifficulty("1");
   };
   return (

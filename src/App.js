@@ -10,7 +10,7 @@ function App() {
     {
       id: 1,
       text: "This is a task",
-      dateDue: "9/19/2023",
+      dateDue: "",
       difficulty: 1,
       completed: false,
     },
@@ -18,7 +18,7 @@ function App() {
     {
       id: 2,
       text: "This is another task",
-      dateDue: "10/1/2023",
+      dateDue: "",
       difficulty: 2,
       completed: true,
     },
@@ -26,7 +26,7 @@ function App() {
 
   // Add Task
   const addTask = (task) => {
-    const id = Math.floor(Math.random * 10000) + 1;
+    const id = Math.floor(Math.random() * 10000) + 1;
 
     const newTask = { id, ...task };
     setTasks([...tasks, newTask]);
