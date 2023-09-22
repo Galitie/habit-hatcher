@@ -1,12 +1,25 @@
 import { useState } from "react";
 
-function AddTask() {
+function AddTask({ onAdd }) {
   const [text, setText] = useState("");
   const [day, setDay] = useState("");
   const [difficulty, setDifficulty] = useState("1");
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (!text) {
+      alert("Please add a task!");
+    }
+
+    onAdd({ text, day, difficulty });
+
+    setText("");
+    setDay();
+    setDifficulty("1");
+  };
   return (
-    <form className="add-form">
+    <form className="add-form" onSubmit={onSubmit}>
       <div className="form-control">
         <label>Task</label>
         <input
