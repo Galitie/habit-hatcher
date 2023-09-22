@@ -1,8 +1,10 @@
 import { useState } from "react";
 
 function AddTask({ onAdd }) {
+  const today = new Date().toISOString().split("T")[0];
+
   const [text, setText] = useState("");
-  const [day, setDay] = useState("");
+  const [dateDue, setDateDue] = useState(today);
   const [difficulty, setDifficulty] = useState("1");
 
   const onSubmit = (e) => {
@@ -12,10 +14,10 @@ function AddTask({ onAdd }) {
       alert("Please add a task!");
     }
 
-    onAdd({ text, day, difficulty });
+    onAdd({ text, dateDue, difficulty });
 
     setText("");
-    setDay("");
+    setDateDue(today);
     setDifficulty("1");
   };
   return (
@@ -33,8 +35,10 @@ function AddTask({ onAdd }) {
         <label>Day task is due</label>
         <input
           type="date"
-          value={day}
-          onChange={(e) => setDay(e.target.value)}
+          name="date"
+          min={today}
+          value={dateDue}
+          onChange={(e) => setDateDue(e.target.value)}
         />
       </div>
       <div className="form-control">

@@ -30,6 +30,7 @@ function App() {
 
     const newTask = { id, ...task };
     setTasks([...tasks, newTask]);
+    console.log(task);
   };
 
   // Delete Task
