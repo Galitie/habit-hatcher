@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import { useState } from "react";
 import AddTask from "./components/AddTask";
+import Creature from "./components/Creature";
 
 function App() {
   const [showAdd, setAdd] = useState(false);
@@ -50,6 +51,7 @@ function App() {
   return (
     <div className="container">
       <Header onAdd={() => setAdd(!showAdd)} showAddTask={showAdd} />
+      <Creature />
       {showAdd && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleComplete} />
