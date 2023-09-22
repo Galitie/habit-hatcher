@@ -1,6 +1,6 @@
 ![reactApp](https://github.com/Galitie/habit-hatcher/assets/105133862/7219d3fe-7cf4-402e-925a-47370c176464)
 # Try it here 
-[habit-hatcher.onrender.com]
+https://habit-hatcher.onrender.com
 
 # Getting Started with Create React App
 
