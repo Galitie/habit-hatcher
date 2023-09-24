@@ -6,6 +6,7 @@ function AddTask({ onAdd }) {
   const [text, setText] = useState("");
   //const [dateDue, setDateDue] = useState(today);
   //const [difficulty, setDifficulty] = useState("1");
+  const [completed, setCompleted] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -15,9 +16,10 @@ function AddTask({ onAdd }) {
       return;
     }
 
-    onAdd({ text }); //add dateDue if you want date, add difficulty if you want difficulty rating
+    onAdd({ text, completed }); //add dateDue if you want date, add difficulty if you want difficulty rating
 
     setText("");
+    setCompleted(false);
     //setDateDue(today);
     //setDifficulty("1");
   };
