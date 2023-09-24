@@ -6,7 +6,7 @@ const Header = ({ onAdd, showAddTask }) => {
       <h1>Habit Hatcher</h1>
       <Button
         color={showAddTask ? "red" : "green"}
-        text={showAddTask ? "Cancel" : "Add task"}
+        text={showAddTask ? "Close" : "Add task"}
         onClick={onAdd}
       />
     </header>

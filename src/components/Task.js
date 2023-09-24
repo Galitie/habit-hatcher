@@ -21,8 +21,8 @@ const Task = ({ task, onDelete, onToggle }) => {
           />
         )}
       </h3>
-      <p>{task.dateDue}</p>
-      <p>Difficulty: {task.difficulty}</p>
+      {/* <p>{task.dateDue}</p> */}
+      {/* <p>Difficulty: {task.difficulty}</p> */}
     </div>
   );
 };

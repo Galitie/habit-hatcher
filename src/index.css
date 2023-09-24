@@ -24,7 +24,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.tagline {
   margin-bottom: 20px;
+  padding: 0;
 }
 
 .btn {
@@ -111,8 +115,9 @@ body {
   justify-content: center;
 }
 
-footer {
-  margin-top: 30px;
+.footer {
+  margin-top: 20px;
   text-align: center;
+  font-size: smaller;
 }
 
