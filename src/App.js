@@ -9,7 +9,9 @@ import Button from "./components/Button";
 
 function App() {
   const [showAdd, setAdd] = useState(false);
-  const [hatch, setHatch] = useState(false);
+  const [hatch, setHatch] = useState(
+    JSON.parse(window.localStorage.getItem("tasksFinished")) || false
+  );
 
   const [tasks, setTasks] = useState(
     JSON.parse(window.localStorage.getItem("tasks")) || [
@@ -33,6 +35,7 @@ function App() {
 
   useEffect(() => {
     window.localStorage.setItem("tasks", JSON.stringify(tasks));
+    window.localStorage.setItem("tasksFinished", hatch);
   });
 
   // Add Task
@@ -66,12 +69,6 @@ function App() {
   // Delay for animation
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-  // Clear to-do list and start over
-  const clear = () => {
-    setTasks([]);
-    setHatch(false);
-  };
-
   return (
     <div className="container">
       <Header onAdd={() => setAdd(!showAdd)} showAddTask={showAdd} />
@@ -84,23 +81,13 @@ function App() {
         <Button
           text={
             hatch
-              ? "Your monster hatched!"
+              ? "Your monster hatched! Start a new list!"
               : "I finished all my tasks for today!"
           }
-          color={hatch ? "black" : "green"}
-          className={"btn-block"}
-          onClick={setHatch}
-        />
-      )}
-      {hatch ? (
-        <Button
           color={"green"}
           className={"btn-block"}
-          text={"Start new to-do list"}
-          onClick={clear}
+          onClick={() => setHatch(!hatch)}
         />
-      ) : (
-        ""
       )}
     </div>
   );
