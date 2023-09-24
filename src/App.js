@@ -24,8 +24,8 @@ function App() {
       },
       {
         id: 3,
-        text: "Example - press the checkmark to submit!",
-        completed: true,
+        text: "Press 'Add Task' to add a new task!",
+        completed: false,
       },
     ]
   );
@@ -52,13 +52,18 @@ function App() {
   };
 
   // Toggle complete
-  const toggleComplete = (id) => {
+  const toggleComplete = async (id) => {
     setTasks(
       tasks.map((task) =>
         task.id === id ? { ...task, completed: !task.completed } : task
       )
     );
+    await delay(1000);
+    setTasks(tasks.filter((task) => task.id !== id));
   };
+
+  // Delay for animation
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   return (
     <div className="container">
@@ -69,7 +74,11 @@ function App() {
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleComplete} />
       ) : (
-        "add a task, or if you are finished with your tasks today, hatch your egg!"
+        <Button
+          text={"I finished all my tasks for today!"}
+          color={"green"}
+          className={"btn-block"}
+        />
       )}
     </div>
   );
