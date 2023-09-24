@@ -2,6 +2,9 @@
 # Try it here 
 https://habit-hatcher.onrender.com
 
+# Info
+Habit hatcher is a React App that uses local storage to store your tasks. Complete all your tasks to hatch a monster!
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
