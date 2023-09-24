@@ -12,6 +12,7 @@ function AddTask({ onAdd }) {
 
     if (!text) {
       alert("Please add a task!");
+      return;
     }
 
     onAdd({ text, dateDue, difficulty });

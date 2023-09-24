@@ -10,18 +10,10 @@ function App() {
   const [tasks, setTasks] = useState([
     {
       id: 1,
-      text: "This is a task",
+      text: "Example task - 2x click to complete",
       dateDue: "",
       difficulty: 1,
       completed: false,
-    },
-
-    {
-      id: 2,
-      text: "This is another task",
-      dateDue: "",
-      difficulty: 2,
-      completed: true,
     },
   ]);
 
@@ -31,7 +23,6 @@ function App() {
 
     const newTask = { id, ...task };
     setTasks([...tasks, newTask]);
-    console.log(task);
   };
 
   // Delete Task
@@ -51,13 +42,9 @@ function App() {
   return (
     <div className="container">
       <Header onAdd={() => setAdd(!showAdd)} showAddTask={showAdd} />
-      <Creature />
+      {tasks.length > 0 ? <Creature /> : 'Click "Add Task" to add a task!'}
       {showAdd && <AddTask onAdd={addTask} />}
-      {tasks.length > 0 ? (
-        <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleComplete} />
-      ) : (
-        'Click "Add Task" to add a task!'
-      )}
+      <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleComplete} />
     </div>
   );
 }

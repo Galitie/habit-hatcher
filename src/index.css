@@ -108,7 +108,7 @@ body {
 
 .egg {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 footer {
