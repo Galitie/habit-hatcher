@@ -9,6 +9,7 @@ import Button from "./components/Button";
 
 function App() {
   const [showAdd, setAdd] = useState(false);
+  const [hatch, setHatch] = useState(false);
 
   const [tasks, setTasks] = useState(
     JSON.parse(window.localStorage.getItem("tasks")) || [
@@ -24,7 +25,7 @@ function App() {
       },
       {
         id: 3,
-        text: "Press 'Add Task' to add a new task!",
+        text: "Example - press 'Add Task' to add a new task",
         completed: false,
       },
     ]
@@ -51,7 +52,7 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  // Toggle complete
+  // Toggle task complete
   const toggleComplete = async (id) => {
     setTasks(
       tasks.map((task) =>
@@ -65,20 +66,41 @@ function App() {
   // Delay for animation
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+  // Clear to-do list and start over
+  const clear = () => {
+    setTasks([]);
+    setHatch(false);
+  };
+
   return (
     <div className="container">
       <Header onAdd={() => setAdd(!showAdd)} showAddTask={showAdd} />
       <Tagline />
-      <Creature />
+      <Creature hatch={hatch} />
       {showAdd && <AddTask onAdd={addTask} />}
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleComplete} />
       ) : (
         <Button
-          text={"I finished all my tasks for today!"}
+          text={
+            hatch
+              ? "Your monster hatched!"
+              : "I finished all my tasks for today!"
+          }
+          color={hatch ? "black" : "green"}
+          className={"btn-block"}
+          onClick={setHatch}
+        />
+      )}
+      {hatch ? (
+        <Button
           color={"green"}
           className={"btn-block"}
+          text={"Start new to-do list"}
+          onClick={clear}
         />
+      ) : (
+        ""
       )}
     </div>
   );
