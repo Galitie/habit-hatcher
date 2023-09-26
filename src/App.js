@@ -14,23 +14,24 @@ function App() {
   );
 
   const [tasks, setTasks] = useState(
-    JSON.parse(window.localStorage.getItem("tasks")) || [
-      {
-        id: 1,
-        text: "Example - click X to delete a task",
-        completed: false,
-      },
-      {
-        id: 2,
-        text: "Example - double click to mark a task completed",
-        completed: false,
-      },
-      {
-        id: 3,
-        text: "Example - press 'Add Task' to add a new task",
-        completed: false,
-      },
-    ]
+    () =>
+      JSON.parse(window.localStorage.getItem("tasks")) || [
+        {
+          id: 1,
+          text: "Example - click X to delete a task",
+          completed: false,
+        },
+        {
+          id: 2,
+          text: "Example - double click to mark a task completed",
+          completed: false,
+        },
+        {
+          id: 3,
+          text: "Example - press 'Add Task' to add a new task",
+          completed: false,
+        },
+      ]
   );
 
   useEffect(() => {
